@@ -33,4 +33,49 @@ fatal: destination path 'alx-system_engineering-devops' already exists and is no
 [?2004l[?1l>[?25h[>4;m[?1049l[23;0;0t]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# cat README.m d
 script that prints the absolute path name of the current working directory
 ]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# cd ..
-]0;root@94f0069f6d82: /alx-system_engineering-devopsroot@94f0069f6d82:/alx-system_engineering-devops# echo Where am I?"[1@"[C[C[C[C[C[C[C[C[C[C[C[C > README.md [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[
+]0;root@94f0069f6d82: /alx-system_engineering-devopsroot@94f0069f6d82:/alx-system_engineering-devops# echo Where am I?"[1@"[C[C[C[C[C[C[C[C[C[C[C[C > README.md [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kd
+]0;root@94f0069f6d82: /alx-system_engineering-devopsroot@94f0069f6d82:/alx-system_engineering-devops# cat README.md
+Where am I?
+]0;root@94f0069f6d82: /alx-system_engineering-devopsroot@94f0069f6d82:/alx-system_engineering-devops# cd 0x00-shell_basics
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# chmod u+x 0-current_working_directory
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# git add .
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# git commit - m "Third commit"
+[master (root-commit) 3346ae0] Third commit
+ 3 files changed, 39 insertions(+)
+ create mode 100755 0x00-shell_basics/0-current_working_directory
+ create mode 100644 0x00-shell_basics/README.md
+ create mode 100644 0x00-shell_basics/that
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# git push
+Password for 'https://Ghp_V3InWckpkBXYQ45DMcISHQ60vIlLcz1QdXn@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/EmmanuelPriest/alx-system_engineering-devops.git/'
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# git push
+Password for 'https://Ghp_V3InWckpkBXYQ45DMcISHQ60vIlLcz1QdXn@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/EmmanuelPriest/alx-system_engineering-devops.git/'
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# git push
+Password for 'https://Ghp_V3InWckpkBXYQ45DMcISHQ60vIlLcz1QdXn@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/EmmanuelPriest/alx-system_engineering-devops.git/'
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# git push
+Password for 'https://Ghp_V3InWckpkBXYQ45DMcISHQ60vIlLcz1QdXn@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/EmmanuelPriest/alx-system_engineering-devops.git/'
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# clear
+[H[2J[3J]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# git push
+Password for 'https://Ghp_V3InWckpkBXYQ45DMcISHQ60vIlLcz1QdXn@github.com': 
+Enumerating objects: 6, done.
+Counting objects:  16% (1/6)Counting objects:  33% (2/6)Counting objects:  50% (3/6)Counting objects:  66% (4/6)Counting objects:  83% (5/6)Counting objects: 100% (6/6)Counting objects: 100% (6/6), done.
+Delta compression using up to 2 threads
+Compressing objects:  25% (1/4)Compressing objects:  50% (2/4)Compressing objects:  75% (3/4)Compressing objects: 100% (4/4)Compressing objects: 100% (4/4), done.
+Writing objects:  16% (1/6)Writing objects:  33% (2/6)Writing objects:  50% (3/6)Writing objects:  66% (4/6)Writing objects:  83% (5/6)Writing objects: 100% (6/6)Writing objects: 100% (6/6), 1.85 KiB | 1.85 MiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To https://github.com/EmmanuelPriest/alx-system_engineering-devops.git
+ * [new branch]      master -> master
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# echo [K[K[K[K[Ktouch 1-list it
+]0;root@94f0069f6d82: /alx-system_engineering-devops/0x00-shell_basicsroot@94f0069f6d82:/alx-system_engineering-devops/0x00-shell_basics# vi 1-listit
+[?1049h[22;0;0t[>4;2m[?1h=[?2004h[1;24r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[24;1H"1-listit" 0L, 0C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[2;1H[1m[34m~                                                                               [3;1H~                                                                               [4;1H~                                                                               [5;1H~                                                                               [6;1H~                                                                               [7;1H~                                                                               [8;1H~                                                                               [9;1H~                                                                               [10;1H~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [m[24;63H0,0-1[9CAll[1;1H[?25h[?25l[24;53H^[[1;1H[24;55H][1;1H[24;56H1[1;1H[24;57H0[1;1H[24;53H     [1;1H[24;53H^[[1;1H[24;55H][1;1H[24;56H1[1;1H[24;57H1[1;1H[24;53H     [1;1H[27m[23m[29m[m[H[2J[2;1H[1m[34m~                                                                               [3;1H~                                                                               [4;1H~                                                                               [5;1H~                                                                               [6;1H~                                                                               [7;1H~                                                                               [8;1H~                                                                               [9;1H~                                                                               [10;1H~                                                                               [11;1H~                  
