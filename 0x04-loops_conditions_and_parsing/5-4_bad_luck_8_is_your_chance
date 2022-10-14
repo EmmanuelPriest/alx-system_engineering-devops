@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script loops from 1 to 10, displays "bad luck" for 4th loop, "good luck"for 8th loop, "Best School" for others
+
+	n=0
+while [ $n -lt 10 ]
+do
+	if [ $n -eq 3 ]
+	then
+		echo "bad luck"
+	elif [ $n -eq 7 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	(( n++ ))
+done
