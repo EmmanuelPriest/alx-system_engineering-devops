@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # This script pings an IP address passed as an argument
 
-ping -c 5 8.8.8.8
-echo Usage: 5-is_the_host_on_the_network {IP_ADDRESS}
+ping -c 5 Usage: 5-is_the_host_on_the_network {8.8.8.8}
