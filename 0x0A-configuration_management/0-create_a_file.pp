@@ -1,5 +1,3 @@
-# @summary Creating a file in /tmp
-#
 # Creating a file in /tmp
 
 file { '/tmp/school':
