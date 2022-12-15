@@ -6,9 +6,10 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo chown -R "$USER":"$USER" /var/www
 
-# code to redirect a specific endpoint (eg: redirect /redirect_me to https://leonhome.co.uk)
+# code to redirect a specific endpoint (eg: redirect /redirect_me to
+# https://www.youtube.com/watch?v=QH2-TGUlwu4)
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.leonhome.co.uk permanent;' /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
 # code to create error page and add a redirect for error 404
 sudo mkdir -p /var/www/error
