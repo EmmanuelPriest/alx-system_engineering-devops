@@ -11,10 +11,10 @@ sudo ufw allow 'Nginx HTTP'
 sudo mkdir -p /var/www/html
 
 # Changing permissions for easy creation of files in /var/www
-sudo chown -R $USER:$USER /var/www
+sudo chmod -R 755 /var/www
 
-# Create the index page
-echo 'Hello World' > /var/www/html/index.nginx-debian.html
+# Creating index page
+echo 'Hello World!' |sudo tee  /var/www/html/index.html
 
 # Create error 404 webpage
 echo "Ceci n'est pas une page" |sudo tee /var/www/html/404.html
