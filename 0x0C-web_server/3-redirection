@@ -8,7 +8,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo chown -R "$USER":"$USER" /var/www
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
-replacement_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.cuberule.com permanent;"
+replacement_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.leonhome.co.uk permanent;"
 sudo sed -i "s/server_name _;/$replacement_string/" /etc/nginx/sites-enabled/default
 
 sudo service nginx restart
