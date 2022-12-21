@@ -1,13 +1,21 @@
 #!/usr/bin/env bash
-# Configure your Nginx server to have a custom 404 page that contains the string
+# Configure your Nginx server to have a custom 404 page that contains the string "Ceci n'est pas une page"
 # and redirect to another page
+# The page must return an HTTP 404 error code
 
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo chown -R "$USER":"$USER" /var/www
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-sudo sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-sudo mkdir -p /var/www/error
-echo "Ceci n'est pas une page" | sudo tee /var/www/error/404.html
-sudo sed -i '/server_name_/a error_page 404 /404.html; location = /404.html {root /var/www/error/;internal;}' /etc/nginx/sites-available/dafault
-sudo service nginx start
+
+# Redirecting to https://www.leonhome.co.uk
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+replacement_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.leonhome.co.uk permanent;"
+sudo sed -i "s/server_name _;/$replacement_string/" /etc/nginx/sites-enabled/default
+
+# create error page and add a redirect for error 404
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+replacement_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+sudo sed -i "s/listen 80 default_server;/$replacement_string/" /etc/nginx/sites-enabled/default
+
+# Restarting the server
+sudo service nginx restart
