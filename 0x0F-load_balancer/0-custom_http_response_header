@@ -22,11 +22,11 @@ echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 
 # Configure redirect page(using /redirect_me) and add header to show hostname
 replacement_string="server_name _;\n\tadd_header X-Served-By \$hostname;\n\trewrite ^\/redirect_me https:\/\/www.leonhome.co.uk permanent;"
-sudo sed -i "s/server_name _;/$replacement_string/" /etc/nginx/sites-enabled/default
+sudo sed -i "s/server_name _;/$replacement_string/" /etc/nginx/sites-available/default
 
 # Configure redirect for error 404 page
 replacement_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
-sudo sed -i "s/listen 80 default_server;/$replacement_string/" /etc/nginx/sites-enabled/default
+sudo sed -i "s/listen 80 default_server;/$replacement_string/" /etc/nginx/sites-available/default
 
 # After updating settings restart web server
 sudo service nginx restart
