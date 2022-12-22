@@ -15,7 +15,7 @@ sudo chown -R "$USER":"$USER" /var/www
 sudo chmod -R 755 /var/www
 
 # Creating index page
-echo 'Hello World!' | sudo tee  /var/www/html/index.nginx-debian.html
+echo 'Hello World!' | sudo tee  /var/www/html/index.html
 
 # Create error 404 webpage
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
