@@ -4,20 +4,24 @@
 # Distribute requests using a roundrobin algorithm
 # Make sure that HAproxy can be managed via an init script
 
-apt-get install --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.6
-apt-get install haproxy=2.6.\*
+sudo apt-get -y update
+apt-get -y install haproxy
 
-cat >> /etc/haproxy/haproxy.cfg << EOF
+server_config=\
+"
 frontend  aniebue-frontend
-        bind *:80
-        mode http
-        default_backend aniebue-backend
+	bind *:80
+	mode http
+	default_backend aniebue-backend
 backend aniebue-backend
-        balance roundrobin
-        server 53448-web-01 54.90.13.5:80 check
-        server 53448-web-02 52.87.153.233:80 check
-EOF
+	balance roundrobin
+	server 53448-web-01 54.90.13.5:80 check
+	server 53448-web-02 52.87.153.233:80 check
+"
+echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+# enable haproxy to be started by init script
 
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
 service haproxy restart
