@@ -19,4 +19,5 @@ backend aniebue-backend
         server 53448-web-02 52.87.153.233:80 check
 EOF
 
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 service haproxy restart
