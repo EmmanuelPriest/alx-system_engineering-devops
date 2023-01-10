@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Script that fixes/configures the container so that Nginx is running as the nginx user
+# nginx must be running as nginx user
+# nginx must be listening on all active IPs on port 8080
+
+# Replace "#user" and its value in /etc/nginx/nginx.conf
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+
+# Putting port 8080 in place or port 80 in /etc/nginx/sites-available/default
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+
+# Granting read and write permission to /etc/nginx/nginx.conf
+chmod 644 /etc/nginx/nginx.conf
+
+# Making sure to kill any apache process that may be hinderance to nginx
+pkill apache2
+
+# Start the nginx service with the new nginx user
+sudo -u nginx service nginx start
