@@ -1,3 +1,11 @@
+# How I Configured my web-01 so that its firewall redirects port 8080/TCP to port 80/TCP:
+# I did sudo vi /etc/ufw/before.rules to edit this /etc/ufw/before.rules file just as it is below(only added the Redirecting port side to the file)
+# Save the configuration
+# Run sudo ufw status verbose to be sure that ufw is not blocking ports 22(ssh), 80(HTTP) and 443(HTTP SSL)
+# Run sudo ufw enable to get ufw active and enabled
+# Run sudo ufw reload/restart to restart ufw and make all the changes to be workingvery well
+
+
 #
 # rules.before
 #
