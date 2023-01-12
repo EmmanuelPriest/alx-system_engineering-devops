@@ -1,4 +1,7 @@
 # This section happened in the web-01
+# Writing UFW rule that allows connections from the replica(web-02) through the source's(web-01) firewall(port 3306 is for replication)
+sudo ufw allow from replica_server_ip to any port 3306
+
 # Configuring the source and replica config files to look exactly like these two files
 4-mysql_configuration_primary
 4-mysql_configuration_replica
@@ -29,7 +32,7 @@ ssh ubuntu@source_server_ip
 # Export database created in web-01 using mysqldump
 sudo mysqldump -u root tyrell_corp > tyrell_corp.sql
 
-# Unlock the databases to make the writable again
+# Unlock the databases to make them writable again
 UNLOCK TABLES;
 
 # Exit from mysql shell
@@ -66,9 +69,9 @@ sudo mysql
 
 # Start replicating data from the source server web-01 while in the replica web-02
 CHANGE MASTER TO
-    -> MASTER_HOST='54.90.13.5',
-    -> MASTER_USER='replica_user',
-    -> MASTER_PASSWORD='jekwureplicaonweb01',
+    -> MASTER_HOST='<MASTER/SOURCE_IP_ADDRESS',
+    -> MASTER_USER='<replica_user_provided_by_alx>',
+    -> MASTER_PASSWORD='<personal_password>',
     -> MASTER_LOG_FILE='mysql-bin.000001',
     -> MASTER_LOG_POS=154;
 
