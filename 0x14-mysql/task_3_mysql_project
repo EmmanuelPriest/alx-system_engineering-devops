@@ -1,0 +1,16 @@
+# Creating a new user for the replica server on the source server web-01
+
+# Create a new user as the replica user to have root privileges using '%'
+CREATE USER '<replica_user_provided_by_alx>'@'%' IDENTIFIED WITH mysql_native_password BY '<personal_password>';
+
+# Grant permissions to replica_user_provided_by_alx so that it can replicate to the source server web-01
+GRANT ALL PRIVILEGES ON *.* TO '<replica_user_provided_by_alx>'@'%';
+
+# Grant select privileges to user_provided_by_alx on the mysql.user table in order to check that replica_user_provided_by_alx was created with the correct permissions
+GRANT SELECT ON mysql.user TO '<user_provided_by_alx>'@'localhost';
+
+# Save changes made
+FLUSH PRIVILEGES;
+
+# Test what was done and supply password when prompted
+mysql -uholberton_user -p -e 'SELECT user, Repl_slave_priv FROM mysql.user'

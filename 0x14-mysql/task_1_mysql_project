@@ -1,0 +1,14 @@
+# Log in to mysql database
+sudo mysql
+
+# Create mysql user on both web-01 and web-02
+CREATE USER '<user_provided_by_alx>'@'localhost' IDENTIFIED BY '<password_provided_by_alx>';
+
+# Grant permission to <user_provided_by_alx> to check the primary/replica status of my databases
+GRANT REPLICATION CLIENT ON *.* TO '<user_provided_by_alx>'@'localhost';
+
+# Save all the changes made
+FLUSH PRIVILEGES;
+
+# Test using this and input password when prompted for it
+mysql -uholberton_user -p -e "SHOW GRANTS FOR 'holberton_user'@'localhost'"

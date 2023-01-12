@@ -1,0 +1,34 @@
+# Craete a database with at least one table and one row in my primary/source mysql server(web-01)
+
+# Log in to mysql database as a root and supply password when prompted
+sudo mysql -u <user_provided_by_alx> -p
+
+# Create a database
+CREATE DATABASE tyrell_corp;
+
+# Show all databases
+SHOW DATABASES;
+
+# Go into the database created
+USE tyrell_corp;
+
+# Create table nexus6
+CREATE TABLE nexus6 (id INT NOT NULL, name VARCHAR(60) NOT NULL);
+
+# Show content of the table
+DESCRIBE nexus6;
+
+# Grant select permission to <user_provided_by_alx>
+GRANT SELECT ON tyrell_corp.nexus6 TO '<user_provided_by_alx>'@'localhost';
+
+# Add values to the rows of the table created
+INSERT INTO nexus6 VALUE (1, "Leon");
+
+# Display the table content
+SELECT * FROM nexus6;
+
+# Save changes made and exit
+FLUSH PRIVILEGES;
+
+# Test if all is working fine and supply password when prompted
+mysql -uholberton_user -p -e "use tyrell_corp; select * from nexus6"

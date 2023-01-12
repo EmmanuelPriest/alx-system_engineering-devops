@@ -1,0 +1,82 @@
+# This section happened in the web-01
+# Configuring the source and replica config files to look exactly like these two files
+4-mysql_configuration_primary
+4-mysql_configuration_replica
+
+# Go into the config file and do the necesary editing/configuration commenting out bind-address
+sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+
+# Restart mysql to save changes
+sudo systemctl restart mysql
+
+# Open mysql shell and supply password when prompted
+mysql -u holberton_user -p
+
+# Close all open tables in every database on the source server web-01 and lock them
+FLUSH TABLES WITH READ LOCK;
+
+# Check the current status information for the source's binary log file
+SHOW MASTER STATUS;
+
+# This is the position from which the replica will start copying database events. Record the File name and the Position value, as you will need these later when you initiate replication.
+
+# Generate private public key pair on source server web-01 and share the public key with the replica server web-02 in its authorized_keys file
+ssh-keygen
+
+# Open a new terminal and ssh into the source server web-01 while mysql is still open on the first terminal that is still locked
+ssh ubuntu@source_server_ip
+
+# Export database created in web-01 using mysqldump
+sudo mysqldump -u root tyrell_corp > tyrell_corp.sql
+
+# Unlock the databases to make the writable again
+UNLOCK TABLES;
+
+# Exit from mysql shell
+exit
+
+# Securely copy the content of the database in web-01 to web-02
+scp tyrell_corp.sql ubuntu@<replica_server_ip>:/tmp/
+
+# Happening in the web-02
+
+# ssh into the replica server web-02
+ssh ubuntu@replica_server_ip
+
+# Log into mysql
+sudo mysql
+
+# Create the database you created in the source server
+CREATE DATABASE tyrell_corp;
+
+# Exit
+exit
+
+# Import the database snapshot
+sudo mysql tyrell_corp < /tmp/tyrell_corp.sql
+
+# Configure the replica's config file
+sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+
+# Restart mysql
+sudo systemctl restart mysql
+
+# Open mysql
+sudo mysql
+
+# Start replicating data from the source server web-01 while in the replica web-02
+CHANGE MASTER TO
+    -> MASTER_HOST='54.90.13.5',
+    -> MASTER_USER='replica_user',
+    -> MASTER_PASSWORD='jekwureplicaonweb01',
+    -> MASTER_LOG_FILE='mysql-bin.000001',
+    -> MASTER_LOG_POS=154;
+
+# Activate/start the replica server web-02
+START SLAVE;
+
+# Display replica status
+SHOW SLAVE STATUS\G;
+
+# Exit from mysql
+exit
