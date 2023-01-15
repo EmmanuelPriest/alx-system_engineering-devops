@@ -4,7 +4,7 @@
 CREATE USER '<replica_user_provided_by_alx>'@'%' IDENTIFIED WITH mysql_native_password BY '<personal_password>';
 
 # Grant permissions to replica_user_provided_by_alx so that it can replicate to the source server web-01
-GRANT ALL PRIVILEGES ON *.* TO '<replica_user_provided_by_alx>'@'%';
+GRANT REPLICATION SLAVE ON *.* TO '<replica_user_provided_by_alx>'@'%';
 
 # Grant select privileges to user_provided_by_alx on the mysql.user table in order to check that replica_user_provided_by_alx was created with the correct permissions
 GRANT SELECT ON mysql.user TO '<user_provided_by_alx>'@'localhost';
