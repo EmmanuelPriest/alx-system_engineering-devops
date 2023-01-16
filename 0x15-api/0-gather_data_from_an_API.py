@@ -12,7 +12,7 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/users" + "/" + employeeId
 
     res = requests.get(url)
-    employeeName = res.json().get("name")
+    employeeName = res.json().get('name')
 
     urlTodo = url + "/todos"
     res = requests.get(urlTodo)
@@ -21,7 +21,7 @@ if __name__ == "__main__":
     numberOfDoneTasks = []
 
     for task in tasks:
-        if task.get("completed"):
+        if task.get('completed'):
             numberOfDoneTasks.append(task)
             totalNumberOfTasks += 1
 
