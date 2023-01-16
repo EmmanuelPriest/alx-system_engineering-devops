@@ -4,6 +4,7 @@ Script that uses a given REST API for a given employee ID
 and returns information about his/her TODO list progress
 and export it in the JSON format
 '''
+import json
 import requests
 import sys
 
@@ -26,5 +27,5 @@ if __name__ == "__main__":
             "completed": task.get('completed'),
             "username": username
         })
-    with open('{}.json'.format(employeeId), 'w') as filename:
-        json.dump(employeeDict, filename)
+    with open('{}.json'.format(employeeId), 'w') as f:
+        json.dump(employeeDict, f)
