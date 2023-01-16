@@ -28,8 +28,8 @@ if res.status_code == 200:
         if task["completed"]:
             number_of_done_tasks.append(task["title"])
         if employee_name == "":
-            user_url =
-            "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
+            user_url = "https://jsonplaceholder.typicode.com/users/{}".\
+                       format(employee_id)
             user_res = requests.get(user_url)
             if user_res.status_code == 200:
                 employee_name = user_res.json()["name"]
@@ -38,7 +38,7 @@ else:
     sys.exit()
 
 # Display employee information in a specific format
-print(f"Employee {employee_name} is done with
+print(f"Employee {employee_name} is done with\
       tasks({len(number_of_done_tasks)}/{total_number_of_tasks}): ")
 for task in number_of_done_tasks:
     print("\t {}".format(task))
