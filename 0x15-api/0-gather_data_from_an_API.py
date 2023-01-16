@@ -11,12 +11,12 @@ if __name__ == "__main__":
     employeeId = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com/users" + "/" + employeeId
 
-    res = requests.get(url)
-    employeeName = res.json().get('name')
+    response = requests.get(url)
+    employeeName = response.json().get('name')
 
-    urlTodo = url + "/todos"
-    res = requests.get(urlTodo)
-    tasks = res.json()
+    todoUrl = url + "/todos"
+    response = requests.get(todoUrl)
+    tasks = response.json()
     totalNumberOfTasks = 0
     numberOfDoneTasks = []
 
