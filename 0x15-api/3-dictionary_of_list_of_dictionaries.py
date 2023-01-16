@@ -16,10 +16,10 @@ if __name__ == "__main__":
     employees = response.json()
 
     employeeDict = {}
-    for user in employees:
+    for user in emloyees:
         user_id = user.get('id')
         username = user.get('username')
-        url = f'https://jsonplaceholder.typicode.com/users/{user_id}'
+        url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
         url = url + '/todos/'
         response = requests.get(url)
         tasks = response.json()
