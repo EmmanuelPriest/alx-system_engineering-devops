@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 '''
 Querying of the Reddit API and printing the titles of the first
 10 hot posts listed for a given subreddit
