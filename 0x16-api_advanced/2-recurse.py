@@ -22,7 +22,7 @@ def recurse(subreddit, hot_list=[]):
                            allow_redirects=False)
 
     if results.status_code == 200:
-        after_data = results.json().get("data").get("query")
+        after_data = results.json().get("data").get("after")
         if after_data is not None:
             after = after_data
             recurse(subreddit, hot_list)
