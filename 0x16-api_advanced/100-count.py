@@ -17,7 +17,7 @@ def count_words(subreddit, word_list, after="", count=[]):
     if after == "":
         count = [0] * len(word_list)
 
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = "http://www.reddit.com/r/{}/hot.json".format(subreddit)
     request = requests.get(url,
                            params={'after': after},
                            allow_redirects=False,
