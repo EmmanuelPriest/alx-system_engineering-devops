@@ -1,0 +1,10 @@
+# Creating a new datadog dashboard and adding four wigets
+
+# search for dashboard
+# new dashboard
+# name your dashboard(i used 53448-web-01)
+# new dashboard
+# add wigets by the center or at the right far side
+# side bar opens by the far right
+# Drag and drop in the dashboard any four wigets out of the first 12 wigets there
+# from the address bar copy a number like this: 1675461991543 from the page link there and paste in this file: 2-setup_datadog provided and push to github. that is the Datadog Wiget's dashboard_id

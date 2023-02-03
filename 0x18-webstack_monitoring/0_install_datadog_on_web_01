@@ -10,7 +10,62 @@
 
 # next step is the Agent Setup
 # install your first Datadog Agent: choose Ubuntu
-# Another page will show where you will copy the command in the FIRST ONE-STEP INSTALL KEY FIELD/BAR. it is something like this  DD_API_KEY=0ad337baf3ffa40a52925e15ed53d39a DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
+# Another page will show where you will copy the command in the FIRST ONE-STEP INSTALL KEY FIELD/BAR. it is something like this DD_API_KEY=0ad337baf3ffa40a52925e15ed53d39a DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
 # copy the command above and paste it in your web-01 server and run it. it will install datadog in web-01 server and automatically start running
 # if you don't want datadog to start running immediately prepend DD_INSTALL_ONLY=true to the above command
-# go back the Agent Setup page on datadog and click on finish(showing that your data is reporting)
+# go back to the Agent Setup page on datadog and click on finish(showing that your data is reporting)
+
+# Creating application key
+# search for application key on the datadog site
+# click on personal settings as individual but organization settings as an organization
+# new key
+# name((i used 53448-web-01)(you can use any name))
+# create key
+# drop down box shows containing the following:
+# name: 53448-web-01
+# keyID: 4dd4..........0-2b6..... (more strings where the dots are)
+# scope: Not scoped
+# application key appears at the top of the box. copy it.
+
+# copy both the API Key(starting with DD_API_KEY=0ad337baf3ffa40a52925e15ed53d39a) and Application Key(looks like: 190a3cd747e6bf8ae5e17c563c1cf19f4752dd8o) and paste them in the spaces provided in your ALX intranet profile
+
+
+# Alternatively use Step-by-step Installation
+
+# Set up apt so that it can download through https and install curl and gnupg
+sudo apt-get update
+sudo apt-get install apt-transport-https curl gnupg
+
+# Set up the Datadog deb repo on your system and create a Datadog archive keyring
+sudo sh -c "echo 'deb [signed-by=/usr/share/keyrings/datadog-archive-keyring.gpg] https://apt.datadoghq.com/ stable 7' > /etc/apt/sources.list.d/datadog.list"
+sudo touch /usr/share/keyrings/datadog-archive-keyring.gpg
+sudo chmod a+r /usr/share/keyrings/datadog-archive-keyring.gpg
+
+curl https://keys.datadoghq.com/DATADOG_APT_KEY_CURRENT.public | sudo gpg --no-default-keyring --keyring /usr/share/keyrings/datadog-archive-keyring.gpg --import --batch
+curl https://keys.datadoghq.com/DATADOG_APT_KEY_382E94DE.public | sudo gpg --no-default-keyring --keyring /usr/share/keyrings/datadog-archive-keyring.gpg --import --batch
+curl https://keys.datadoghq.com/DATADOG_APT_KEY_F14F620E.public | sudo gpg --no-default-keyring --keyring /usr/share/keyrings/datadog-archive-keyring.gpg --import --batch
+
+# If running Ubuntu 14 or earlier, copy the keyring to /etc/apt/trusted.gpg.d
+sudo cp -a /usr/share/keyrings/datadog-archive-keyring.gpg /etc/apt/trusted.gpg.d/
+
+# Update your local apt repo and install the Agent
+sudo apt-get update
+sudo apt-get install datadog-agent datadog-signing-keys
+
+# Optionally import existing Agent 5 configuration if upgrading from Agent 5 (5.17+ only)
+sudo -u dd-agent -- datadog-agent import /etc/dd-agent /etc/datadog-agent
+
+# Alternatively, copy the example config into place and plug in your API key (1ad337bsf5ffa40a52925e06ed33f39f)
+sudo sh -c "sed 's/api_key:.*/api_key: 1ad337bsf5ffa40a52925e06ed33f39f/' /etc/datadog-agent/datadog.yaml.example > /etc/datadog-agent/datadog.yaml"
+
+# Configure your Datadog region
+sudo sh -c "sed -i 's/# site:.*/site: datadoghq.com/' /etc/datadog-agent/datadog.yaml"
+
+# Ensure permissions are correct
+sudo sh -c "chown dd-agent:dd-agent /etc/datadog-agent/datadog.yaml && chmod 640 /etc/datadog-agent/datadog.yaml"
+
+#Start the Agent with Ubuntu 16.04 and higher
+sudo systemctl restart datadog-agent.service
+
+# Start the Agent with Ubuntu 14.04
+sudo initctl start datadog-agent
