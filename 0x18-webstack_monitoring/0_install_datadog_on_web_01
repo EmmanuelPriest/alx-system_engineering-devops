@@ -1,0 +1,16 @@
+# how to install datadog on web-01 server
+
+# login to datadog website  https://www.datadoghq.com
+# sign up and create your account
+
+# next step is working on YOUR STACK
+# do not select anything for the stack
+# are you a managed service provider/hosting provider? ans: NO
+# what's your first goal with Datadog? ans: SERVER AND APPLICATION MONITORING
+
+# next step is the Agent Setup
+# install your first Datadog Agent: choose Ubuntu
+# Another page will show where you will copy the command in the FIRST ONE-STEP INSTALL KEY FIELD/BAR. it is something like this  DD_API_KEY=0ad337baf3ffa40a52925e15ed53d39a DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script_agent7.sh)"
+# copy the command above and paste it in your web-01 server and run it. it will install datadog in web-01 server and automatically start running
+# if you don't want datadog to start running immediately prepend DD_INSTALL_ONLY=true to the above command
+# go back the Agent Setup page on datadog and click on finish(showing that your data is reporting)
