@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Script that reloads Gunicorn in a graceful way
 
-kill -HUP `ps -C gunicorn fch -o pid | head
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
